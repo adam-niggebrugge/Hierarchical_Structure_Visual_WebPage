@@ -1,0 +1,33 @@
+{
+  "name": "team_builder_visualize",
+  "version": "1.0.0",
+  "description": "Demonstration of javascript and NodeJS",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adam-niggebrugge/Hierarchical_Structure_Visual_WebPage.git"
+  },
+  "keywords": [
+    "javascript",
+    "NodeJS",
+    "Inquirer",
+    "Jest",
+    "HTML",
+    ".CSS",
+    "Materialize"
+  ],
+  "author": "NAI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adam-niggebrugge/Hierarchical_Structure_Visual_WebPage/issues"
+  },
+  "homepage": "https://github.com/adam-niggebrugge/Hierarchical_Structure_Visual_WebPage#readme"
+}
