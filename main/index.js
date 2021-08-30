@@ -1,9 +1,10 @@
-const TeamMember = require("./lib/TeamMember");
-const Captain = require("./lib/Captain");
+const TeamMember = require('./lib/TeamMember');
+const Captain = require('./lib/Captain');
+const Forward = require('./lib/Forward')
 
-const inquirer = require("inquirer");
-const path = require("path");
-const fs = require("fs");
+const inquirer = require('inquirer');
+const path = require('path');
+const fs = require('fs');
 
 const teamMembers = [];
 const kitNumberCheck = [];
@@ -12,23 +13,23 @@ let isGoalie = false;
 function startQuestions() {
 
     function createCaptain() {
-        console.log("Please build your Soccer Club");
+        console.log('Please build your Soccer Club');
         inquirer.prompt([
           {
-            type: "input",
-            name: "name",
-            message: "What is the team Captain's name?",
+            type: 'input',
+            name: 'name',
+            message: 'What is the team Captain\'s name?',
             validate: answer => {
-              if (answer !== "") {
+              if (answer !== '') {
                 return true;
               }
-              return "Please enter at least one character.";
+              return 'Please enter at least one character.';
             }
           },
           {
-            type: "input",
-            name: "captainKitNumber",
-            message: "What number does your Captain where?",
+            type: 'input',
+            name: 'captainKitNumber',
+            message: 'What number does your Captain wear?',
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -36,13 +37,13 @@ function startQuestions() {
               if (pass) {
                 return true;
               }
-              return "Please enter a positive number.";
+              return 'Please enter a positive number.';
             }
           },
           {
-            type: "input",
-            name: "captainEmail",
-            message: "What is the Captain's email?",
+            type: 'input',
+            name: 'captainEmail',
+            message: 'What is the Captain\'s email?',
             validate: answer => {
               const pass = answer.match(
                 /\S+@\S+\.\S+/
@@ -50,13 +51,13 @@ function startQuestions() {
               if (pass) {
                 return true;
               }
-              return "Please enter a valid email address.";
+              return 'Please enter a valid email address.';
             }
           },
           {
-            type: "input",
-            name: "experience",
-            message: "What is the team Captain's experince with the club?",
+            type: 'input',
+            name: 'experience',
+            message: 'What is the team Captain\'s experince with the club?',
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -64,7 +65,7 @@ function startQuestions() {
               if (pass) {
                 return  true;
               }
-              return "Please enter a positive number.";
+              return 'Please enter a positive number.';
             }
           },
         ]).then(answers => {
@@ -77,38 +78,38 @@ function startQuestions() {
       function addTeamMember(){
         inquirer.prompt([
           {
-            type: "input",
-            name: "name",
-            message: "What is the team member's name?",
+            type: 'input',
+            name: 'name',
+            message: 'What is the team member\'s name?',
             validate: answer => {
-              if (answer !== "") {
+              if (answer !== '') {
                 return true;
               }
-              return "Please enter at least one character.";
+              return 'Please enter at least one character.';
             }
           },
           {
-            type: "input",
-            name: "kitNumber",
-            message: "What number does your Captain where?",
+            type: 'input',
+            name: 'kitNumber',
+            message: 'What number does your team member wear?',
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
               );
               if (pass) {
                 if (kitNumberCheck.includes(answer)) {
-                  return "This ID is already taken. Please enter a different number.";
+                  return 'This ID is already taken. Please enter a different number.';
                 } else {
                   return true;
                 }
               }
-              return "Please enter a positive number.";
+              return 'Please enter a positive number.';
             }
           },
           {
-            type: "input",
-            name: "captainEmail",
-            message: "What is the Captain's email?",
+            type: 'input',
+            name: 'email',
+            message: 'What is the team member\'s email?',
             validate: answer => {
               const pass = answer.match(
                 /\S+@\S+\.\S+/
@@ -116,42 +117,35 @@ function startQuestions() {
               if (pass) {
                 return true;
               }
-              return "Please enter a valid email address.";
-            }
-          },
-          {
-            type: "input",
-            name: "experience",
-            message: "What is the team Captain's experince with the club?",
-            validate: answer => {
-              const pass = answer.match(
-                /^[0-9]\d*$/
-              );
-              if (pass) {
-                return true;
-              }
-              return "Please enter a positive number.";
+              return 'Please enter a valid email address.';
             }
           },
         ]).then(answers => {
-          const teamMember = new TeamMember(answers.name, answers.kitNumber, answers.captainEmail, answers.experience);
+          const teamMember = new TeamMember(answers.name, answers.kitNumber, answers.email);
           setPosition(teamMember);
           kitNumberCheck.push(answers.kitNumber);
         });
       }
 
+      function addForward(teamMember){
+        inquirer.prompt([
+        ]).then(answers => {
+           const forward = new Forward()
+        });
+      }
+
       function getPositionInquirer(teamMember, position){
         switch (position) {
-          case "Forward":
+          case 'Forward':
             addForward(teamMember);
             break;
-          case "Midfield":
+          case 'Midfield':
             addMidfield(teamMember);
             break;
-          case "Defender":
+          case 'Defender':
             addDefender(teamMember);
             break;
-          case "Goalie":
+          case 'Goalie':
             addGoalie(teamMember);
              break;
           default:
@@ -163,8 +157,8 @@ function startQuestions() {
         if(isGoalie === false){
           inquirer.prompt([
             {
-              type: "list",
-              name: "position",
+              type: 'list',
+              name: 'position',
               message: `What position does your ${teamMember.getRole()} play?`,
               choices: ['Forward', 'Midfield', 'Defender', 'Goalie'],
             }
@@ -178,8 +172,8 @@ function startQuestions() {
         } else {
           inquirer.prompt([
             {
-              type: "list",
-              name: "position",
+              type: 'list',
+              name: 'position',
               message: `What position does your ${teamMember.getRole()} play?`,
               choices: ['Forward', 'Midfield', 'Defender'],
             }
