@@ -95,8 +95,8 @@ function startQuestions() {
             } else if (answers.confirm_answer) {
               buildTeam();
             } else {
-              // the user changed their mind
-              // run the function to ask this question again
+              console.log('You are probably right, why stop when there is no constraints on your team size?');
+              addTeamMember();
             } 
           });
       }
@@ -175,6 +175,48 @@ function startQuestions() {
             teamMembers.push(forward);
           } else{
             const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, answers.scoredGoals);
+            teamMembers.push(forward);
+          }
+          checkToAddMore();
+        });
+      }
+
+      function addMidfield(teamMember){
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'longestGoalScored',
+            message: `What is the longest goal has ${teamMember.name}?`,
+            validate: answer => {
+              const pass = answer.match(
+                /^[0-9]\d*$/
+              );
+              if (pass) {
+                return true;
+              }
+              return 'Please enter a positive number.';
+            }
+          },
+          {
+            type: 'input',
+            name: 'dualsWon',
+            message: `How many duals has ${teamMember.name}?`,
+            validate: answer => {
+              const pass = answer.match(
+                /^[0-9]\d*$/
+              );
+              if (pass) {
+                return true;
+              }
+              return 'Please enter a positive number.';
+            }
+          },
+        ]).then(answers => {
+           if(teamMember.getRole === 'Captain'){
+            const midfield = new Midfield(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.longestGoalScored, answers.dualsWon);
+            teamMembers.push(forward);
+          } else{
+            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.longestGoalScored, answers.dualsWon);
             teamMembers.push(forward);
           }
           checkToAddMore();

@@ -1,9 +1,9 @@
 const Captain = require("./Captain");
 const TeamMember = require("./TeamMember");
 
-class Forward extends TeamMember, Captain {
-    constructor(name, id, email, longestGoalScored, dualsWon) {
-        super(name, id, email, experience);
+class Midfield extends TeamMember, Captain {
+    constructor(name, kitNumber, email, experience, longestGoalScored, dualsWon) {
+        super(name, kitNumber, email, experience);
         this.longestGoalScored = longestGoalScored;
         this.dualsWon = dualsWon;
     }
