@@ -1,17 +1,19 @@
 class TeamMember {
     
-  constructor(name, id, rallyCry) {
+  constructor(name, kitNumber, rallyCry, position, email) {
     this.name = name;
-    this.id = id;
+    this.kitNumber = kitNumber;
     this.rallyCry = rallyCry;
+    this.position = position;
+    this.email = email;
   }
 
   getName() {
     return this.name;
   }
 
-  getId() {
-    return this.id;
+  getKitNumber() {
+    return this.kitNumber;
   }
 
   getRallyCry() {
