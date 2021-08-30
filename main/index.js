@@ -75,6 +75,32 @@ function startQuestions() {
         });
       }
 
+      function checkToAddMore(){
+        inquirer.prompt([
+            {
+              name: "continue",
+              type: "confirm",
+              message: "Would you like to add more team members?",
+            },
+            {
+              name: "confirm_answer",
+              type: "confirm",
+              message: "Are you sure?",
+              when: (answers) => answers.continue === false,
+            },
+          ])
+          .then((answers) => {
+            if (answers.continue) {
+              addTeamMember();
+            } else if (answers.confirm_answer) {
+              buildTeam();
+            } else {
+              // the user changed their mind
+              // run the function to ask this question again
+            } 
+          });
+      }
+
       function addTeamMember(){
         inquirer.prompt([
           {
@@ -129,8 +155,29 @@ function startQuestions() {
 
       function addForward(teamMember){
         inquirer.prompt([
+          {
+            type: 'input',
+            name: 'scoredGoals',
+            message: `How many goals has ${teamMember.name}?`,
+            validate: answer => {
+              const pass = answer.match(
+                /^[0-9]\d*$/
+              );
+              if (pass) {
+                return true;
+              }
+              return 'Please enter a positive number.';
+            }
+          },
         ]).then(answers => {
-           const forward = new Forward()
+           if(teamMember.getRole === 'Captain'){
+            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.scoredGoals);
+            teamMembers.push(forward);
+          } else{
+            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, answers.scoredGoals);
+            teamMembers.push(forward);
+          }
+          checkToAddMore();
         });
       }
 
@@ -167,7 +214,6 @@ function startQuestions() {
               isGoalie = true;
             }
              getPositionInquirer(teamMember, answers.position)
-            
           })
         } else {
           inquirer.prompt([
@@ -182,6 +228,12 @@ function startQuestions() {
           })
         }
       }
+
+
+      function buildTeam() {
+        //TODO file stream out
+      }
+
 
       createCaptain(); 
 

@@ -2,8 +2,8 @@ const Captain = require("./Captain");
 const TeamMember = require("./TeamMember");
 
 class Goalie extends TeamMember, Captain {
-    constructor(name, id, email, saves, verticalJump) {
-        super(name, id, email, experience);
+    constructor(name, kitNumber, email, experience, saves, verticalJump) {
+        super(name, kitNumber, email, experience);
         this.saves = saves;
         this.verticalJump = verticalJump;
     }

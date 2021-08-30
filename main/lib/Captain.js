@@ -2,8 +2,8 @@ const TeamMember = require("./TeamMember");
 
 class Captain extends TeamMember {
 
-  constructor(name, id, email, experience) {
-    super(name, id, email);
+  constructor(name, kitNumber, email, experience) {
+    super(name, kitNumber, email);
     this.experience = experience;
   }
 
