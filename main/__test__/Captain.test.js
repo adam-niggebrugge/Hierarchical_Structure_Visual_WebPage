@@ -4,7 +4,7 @@ const TeamMembers = require("../lib/TeamMember");
 test("Can set office number via constructor argument", () => {
   const testValue = 100;
   const e = new Captain("Foo", 1, "test@test.com", testValue);
-  expect(e.level).toBe(testValue);
+  expect(e.experience).toBe(testValue);
 });
 
 test("getRole() should return \"Captain\"", () => {
@@ -16,5 +16,5 @@ test("getRole() should return \"Captain\"", () => {
 test("Can get office number via getOffice()", () => {
   const testValue = 100;
   const e = new Captain("Foo", 1, "test@test.com", testValue);
-  expect(e.getLevel()).toBe(testValue);
+  expect(e.getExperience()).toBe(testValue);
 });

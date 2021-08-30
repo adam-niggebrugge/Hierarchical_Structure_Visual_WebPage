@@ -1,10 +1,14 @@
+const TeamMember = require("./lib/TeamMember");
 const Captain = require("./lib/Captain");
 
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-function createPage() {
+const teamMembers = [];
+const kitNumber = [];
+
+function startQuestions() {
 
     function createCaptain() {
         console.log("Please build your Soccer Club");
@@ -22,7 +26,7 @@ function createPage() {
           },
           {
             type: "input",
-            name: "captainId",
+            name: "captainKitNumber",
             message: "What number does your Captain where?",
             validate: answer => {
               const pass = answer.match(
@@ -51,7 +55,7 @@ function createPage() {
           },
           {
             type: "input",
-            name: "captainOfficeNumber",
+            name: "experience",
             message: "What is the team Captain's experince with the club?",
             validate: answer => {
               const pass = answer.match(
@@ -60,16 +64,18 @@ function createPage() {
               if (pass) {
                 return true;
               }
-              return "Please enter a positive number greater than zero.";
+              return "Please enter a positive number.";
             }
           }
         ]).then(answers => {
           const captain = new captain(answers.captainName, answers.captainId, answers.captainEmail, answers.captainOfficeNumber);
           teamMembers.push(captain);
-          idArray.push(answers.captainId);
+          kitNumber.push(answers.captainKitId);
           createTeam();
         });
       }
 
       createCaptain(); 
 }
+
+startQuestions();
