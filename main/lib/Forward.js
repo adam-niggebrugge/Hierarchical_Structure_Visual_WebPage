@@ -1,10 +1,8 @@
 const Player = require("./Player");
-const TeamMember = require("../lib/TeamMember");
-const tm = new TeamMember("foo", "foo@foo.com");
 
 class Forward extends Player {
-    constructor(kitNumber, twitterhandle, tm, goals) {
-        super(kitNumber, twitterhandle, tm);
+    constructor(kitNumber, twitterhandle, object, goals) {
+        super(kitNumber, twitterhandle, object);
         this.scoredGoals = goals;
     }
 
