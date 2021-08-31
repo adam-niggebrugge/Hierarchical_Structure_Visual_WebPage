@@ -1,6 +1,9 @@
 const TeamMember = require('./lib/TeamMember');
 const Captain = require('./lib/Captain');
 const Forward = require('./lib/Forward')
+const Defender = require('./lib/Defender');
+const Midfield = require('./lib/MidField');
+const Goalie = require('./lib/Goalie');
 
 const inquirer = require('inquirer');
 const path = require('path');
@@ -8,7 +11,7 @@ const fs = require('fs');
 
 const teamMembers = [];
 const kitNumberCheck = [];
-let isGoalie = false;
+let isGoalie = false;//Flag to only allow one goalie per team
 
 function startQuestions() {
 
@@ -24,20 +27,6 @@ function startQuestions() {
                 return true;
               }
               return 'Please enter at least one character.';
-            }
-          },
-          {
-            type: 'input',
-            name: 'captainKitNumber',
-            message: 'What number does your Captain wear?',
-            validate: answer => {
-              const pass = answer.match(
-                /^[0-9]\d*$/
-              );
-              if (pass) {
-                return true;
-              }
-              return 'Please enter a positive number.';
             }
           },
           {
@@ -71,7 +60,6 @@ function startQuestions() {
         ]).then(answers => {
           const captain = new captain(answers.name, answers.captainKitNumber, answers.captainEmail, answers.experience);
           setPosition(captain);
-          kitNumber.push(answers.captainKitId);
         });
       }
 
@@ -116,24 +104,6 @@ function startQuestions() {
           },
           {
             type: 'input',
-            name: 'kitNumber',
-            message: 'What number does your team member wear?',
-            validate: answer => {
-              const pass = answer.match(
-                /^[0-9]\d*$/
-              );
-              if (pass) {
-                if (kitNumberCheck.includes(answer)) {
-                  return 'This ID is already taken. Please enter a different number.';
-                } else {
-                  return true;
-                }
-              }
-              return 'Please enter a positive number.';
-            }
-          },
-          {
-            type: 'input',
             name: 'email',
             message: 'What is the team member\'s email?',
             validate: answer => {
@@ -145,16 +115,29 @@ function startQuestions() {
               }
               return 'Please enter a valid email address.';
             }
-          },
+          }
         ]).then(answers => {
           const teamMember = new TeamMember(answers.name, answers.kitNumber, answers.email);
           setPosition(teamMember);
-          kitNumberCheck.push(answers.kitNumber);
         });
       }
 
       function addForward(teamMember){
         inquirer.prompt([
+          {
+            type: 'input',
+            name: 'kitNumber',
+            message: `What number does ${teamMember.name} wear?'`,
+            validate: answer => {
+              const pass = answer.match(
+                /^[0-9]\d*$/
+              );
+              if (pass) {
+                return true;
+              }
+              return 'Please enter a positive number.';
+            }
+          },
           {
             type: 'input',
             name: 'scoredGoals',
@@ -170,13 +153,7 @@ function startQuestions() {
             }
           },
         ]).then(answers => {
-           if(teamMember.getRole === 'Captain'){
-            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.scoredGoals);
-            teamMembers.push(forward);
-          } else{
-            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, answers.scoredGoals);
-            teamMembers.push(forward);
-          }
+          kitNumber.push(answers.kitNumber);
           checkToAddMore();
         });
       }
@@ -200,7 +177,7 @@ function startQuestions() {
           {
             type: 'input',
             name: 'dualsWon',
-            message: `How many duals has ${teamMember.name}?`,
+            message: `How many duals has ${teamMember.name} won per game?`,
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -212,13 +189,8 @@ function startQuestions() {
             }
           },
         ]).then(answers => {
-           if(teamMember.getRole === 'Captain'){
-            const midfield = new Midfield(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.longestGoalScored, answers.dualsWon);
-            teamMembers.push(forward);
-          } else{
-            const forward = new Forward(teamMember.name, teamMember.kitNumber, teamMember.email, teamMember.experience, answers.longestGoalScored, answers.dualsWon);
-            teamMembers.push(forward);
-          }
+          kitNumber.push(answers.kitNumber);
+          
           checkToAddMore();
         });
       }
@@ -238,7 +210,7 @@ function startQuestions() {
             addGoalie(teamMember);
              break;
           default:
-            //file stream out
+            buildTeam();
         }
       }
 
