@@ -9,6 +9,9 @@ const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 
+const OUTPUT_DIR = path.resolve(__dirname, "output")
+const outputPath = path.join(OUTPUT_DIR, "club.html");
+
 const teamMembers = [];
 const kitNumberCheck = [];
 let isGoalie = false;//Flag to only allow one goalie per team
@@ -443,7 +446,11 @@ function startQuestions() {
       }
 
       function buildTeam() {
-        //TODO file stream out
+         // Create the output directory if the output path doesn't exist
+        if (!fs.existsSync(OUTPUT_DIR)) {
+          fs.mkdirSync(OUTPUT_DIR)
+        }
+        fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
         return;
       }
 
