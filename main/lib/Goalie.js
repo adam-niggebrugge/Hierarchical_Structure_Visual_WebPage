@@ -1,11 +1,18 @@
-const Captain = require("./Captain");
-const TeamMember = require("./TeamMember");
+const Player = require('./Player');
 
-class Goalie extends TeamMember, Captain {
-    constructor(name, kitNumber, email, experience, saves, verticalJump) {
-        super(name, kitNumber, email, experience);
+class Goalie extends Player {
+    /**
+     * 
+     * @param {*} kitNumber  expect postive number
+     * @param {*} twitterHandle expect string starting with @
+     * @param {*} object expecting either teamMember or captain object
+     * @param {*} saves expecting postive number
+     * @param {*} cleanSheets expecting postive number
+     */
+    constructor(kitNumber, twitterHandle, object, saves, cleanSheets) {
+        super(kitNumber, twitterHandle, object);
         this.saves = saves;
-        this.verticalJump = verticalJump;
+        this.cleanSheets = cleanSheets;
     }
 
     getPosition() {
@@ -16,8 +23,10 @@ class Goalie extends TeamMember, Captain {
         return this.saves;
     }
 
-    getVerticalJump(){
-        return this.verticalJump;
+    getCleanSheets(){
+        return this.cleanSheets;
     }
 
 }
+
+module.exports = Goalie; 
