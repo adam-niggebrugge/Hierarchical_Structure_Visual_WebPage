@@ -1,9 +1,8 @@
-const Captain = require("./Captain");
-const TeamMember = require("./TeamMember");
+const Player = require("./Player");
 
-class Midfield extends TeamMember, Captain {
-    constructor(name, kitNumber, email, experience, longestGoalScored, dualsWon) {
-        super(name, kitNumber, email, experience);
+class Midfield extends Player {
+    constructor(kitNumber, twitterhandle, object, longestGoalScored, dualsWon) {
+        super(kitNumber, twitterhandle, object);
         this.longestGoalScored = longestGoalScored;
         this.dualsWon = dualsWon;
     }
@@ -19,5 +18,6 @@ class Midfield extends TeamMember, Captain {
     getLongestGoalScored(){
         return this.longestGoalScored;
     }
-
 }
+
+module.exports = Midfield; 
