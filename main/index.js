@@ -46,7 +46,7 @@ function startQuestions() {
           {
             type: 'input',
             name: 'experience',
-            message: 'What is the team Captain\'s experince with the club?',
+            message: 'How many years has the Captain spent with the club?',
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -58,7 +58,7 @@ function startQuestions() {
             }
           },
         ]).then(answers => {
-          const captain = new captain(answers.name, answers.captainKitNumber, answers.captainEmail, answers.experience);
+          const captain = new Captain(answers.name, answers.captainEmail, answers.experience);
           setPosition(captain);
         });
       }
@@ -74,7 +74,7 @@ function startQuestions() {
               name: "confirm_answer",
               type: "confirm",
               message: "Are you sure?",
-              when: (answers) => answers.continue === false,
+              when: (answer) => answer.continue === false,
             },
           ])
           .then((answers) => {
@@ -117,7 +117,7 @@ function startQuestions() {
             }
           }
         ]).then(answers => {
-          const teamMember = new TeamMember(answers.name, answers.kitNumber, answers.email);
+          const teamMember = new TeamMember(answers.name, answers.email);
           setPosition(teamMember);
         });
       }
@@ -127,15 +127,33 @@ function startQuestions() {
           {
             type: 'input',
             name: 'kitNumber',
-            message: `What number does ${teamMember.name} wear?'`,
+            message: `What number does ${teamMember.name} wear?`,
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
               );
+              if (pass){
+                if(kitNumberCheck.includes(answer)){
+                  return 'This number has already been assigned. Please enter a different number.'
+                }else {
+                  return true;
+                }
+              }
+              return 'Please enter a positive number.';
+            }
+          },
+          {
+            type: 'input',
+            name: 'twitter',
+            message: 'What is the team member\'s twitter handle?',
+            validate: answer => {
+              const pass = answer.match(
+                /@\S+/
+              );
               if (pass) {
                 return true;
               }
-              return 'Please enter a positive number.';
+              return 'Please enter a valid twitter handle.::HINT:: add the @ to the beginning';
             }
           },
           {
@@ -153,7 +171,9 @@ function startQuestions() {
             }
           },
         ]).then(answers => {
-          kitNumber.push(answers.kitNumber);
+          const forward = new Forward(answers.kitNumber, answers.twitter, teamMember, answers.scoredGoals);
+          teamMembers.push(forward);
+          kitNumberCheck.push(answers.kitNumber);
           checkToAddMore();
         });
       }
@@ -162,8 +182,40 @@ function startQuestions() {
         inquirer.prompt([
           {
             type: 'input',
+            name: 'kitNumber',
+            message: `What number does ${teamMember.name} wear?`,
+            validate: answer => {
+              const pass = answer.match(
+                /^[0-9]\d*$/
+              );
+              if (pass){
+                if(kitNumberCheck.includes(answer)){
+                  return 'This number has already been assigned. Please enter a different number.'
+                }else {
+                  return true;
+                }
+              }
+              return 'Please enter a positive number.';
+            }
+          },
+          {
+            type: 'input',
+            name: 'twitter',
+            message: 'What is the team member\'s twitter handle?',
+            validate: answer => {
+              const pass = answer.match(
+                /@\S+/
+              );
+              if (pass) {
+                return true;
+              }
+              return 'Please enter a valid twitter handle.::HINT:: add the @ to the beginning';
+            }
+          },
+          {
+            type: 'input',
             name: 'longestGoalScored',
-            message: `What is the longest goal has ${teamMember.name}?`,
+            message: `What is the longest goal ${teamMember.name} has scored for your club?`,
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -189,10 +241,151 @@ function startQuestions() {
             }
           },
         ]).then(answers => {
-          kitNumber.push(answers.kitNumber);
-          
+          const midfield = new Midfield(answers.kitNumber, answers.twitter, teamMember, answers.longestGoalScored, answers.dualsWon);
+          teamMembers.push(midfield);
+          kitNumberCheck.push(answers.kitNumber);
           checkToAddMore();
         });
+      }
+
+      function addDefender(teamMember){
+        inquirer.prompt([
+        {
+          type: 'input',
+          name: 'kitNumber',
+          message: `What number does ${teamMember.name} wear?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+              if(kitNumberCheck.includes(answer)){
+                return 'This number has already been assigned. Please enter a different number.'
+              }else {
+                return true;
+              }
+            }
+            return 'Please enter a positive number.';
+          }
+        },
+        {
+          type: 'input',
+          name: 'twitter',
+          message: 'What is the team member\'s twitter handle?',
+          validate: answer => {
+            const pass = answer.match(
+              /@\S+/
+            );
+            if (pass) {
+              return true;
+            }
+            return 'Please enter a valid twitter handle.::HINT:: add the @ to the beginning';
+          }
+        },
+        {
+          type: 'input',
+          name: 'averageHeaderAmt',
+          message: `How many headers does ${teamMember.name} average per game?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+                return true;
+            }
+            return 'Please enter a positive number.';
+          }
+        },
+        {
+          type: 'input',
+          name: 'blocks',
+          message: `How many blocks is ${teamMember.name} credited with?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+              return true;
+            }
+            return 'Please enter a positive number.';
+          }
+        }
+        ]).then(answers => {
+          const defender = new Defender(answers.kitNumber, answers.twitter, teamMember, answers.averageHeaderAmt, answers.blocks);
+          teamMembers.push(defender);
+          kitNumberCheck.push(answers.kitNumber);
+          checkToAddMore();
+        })
+      }
+
+      function addGoalie(teamMember){
+        inquirer.prompt([
+        {
+          type: 'input',
+          name: 'kitNumber',
+          message: `What number does ${teamMember.name} wear?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+              if(kitNumberCheck.includes(answer)){
+                return 'This number has already been assigned. Please enter a different number.'
+              }else {
+                return true;
+              }
+            }
+            return 'Please enter a positive number.';
+          }
+        },
+        {
+          type: 'input',
+          name: 'twitter',
+          message: 'What is the team member\'s twitter handle?',
+          validate: answer => {
+            const pass = answer.match(
+              /@\S+/
+            );
+            if (pass) {
+              return true;
+            }
+            return 'Please enter a valid twitter handle.::HINT:: add the @ to the beginning';
+          }
+        },
+        {
+          type: 'input',
+          name: 'saves',
+          message: `How many saves does ${teamMember.name} have for your club?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+                return true;
+            }
+            return 'Please enter a positive number.';
+          }
+        },
+        {
+          type: 'input',
+          name: 'cleanSheets',
+          message: `How many clean sheets does ${teamMember.name} have for your club?`,
+          validate: answer => {
+            const pass = answer.match(
+              /^[0-9]\d*$/
+            );
+            if (pass){
+              return true;
+            }
+            return 'Well, that was unexpected, surely a mistake. Please enter a positive number.';
+          }
+        }
+        ]).then(answers => {
+          const goalie = new Goalie(answers.kitNumber, answers.twitter, teamMember, answers.saves, answers.cleanSheets);
+          teamMembers.push(goalie);
+          kitNumberCheck.push(answers.kitNumber);
+          checkToAddMore();
+        })
       }
 
       function getPositionInquirer(teamMember, position){
@@ -222,12 +415,18 @@ function startQuestions() {
               name: 'position',
               message: `What position does your ${teamMember.getRole()} play?`,
               choices: ['Forward', 'Midfield', 'Defender', 'Goalie'],
-            }
+            },
+            {
+              name: "confirm_answer",
+              type: "confirm",
+              message: `You can only designate one Goalie for the club. Are you sure want ${teamMember.name} as your Goalie?`,
+              when: (answer) => answer.position === 'Goalie',
+            },
           ]).then(answers => {
             if(answers.position === 'Goalie'){
               isGoalie = true;
             }
-             getPositionInquirer(teamMember, answers.position)
+             getPositionInquirer(teamMember, answers.position);
           })
         } else {
           inquirer.prompt([
@@ -238,22 +437,17 @@ function startQuestions() {
               choices: ['Forward', 'Midfield', 'Defender'],
             }
           ]).then(answers => {
-            getPositionInquirer(teamMember, answers.position)
+            getPositionInquirer(teamMember, answers.position);
           })
         }
       }
-
 
       function buildTeam() {
         //TODO file stream out
         return;
       }
 
-
       createCaptain(); 
-
-
-
 
 }
 
