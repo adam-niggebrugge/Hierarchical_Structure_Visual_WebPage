@@ -26,3 +26,5 @@ class Defender extends Captain {
         return this.blocks;
     }
 }
+
+module.exports = Defender;
