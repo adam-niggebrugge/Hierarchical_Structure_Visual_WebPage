@@ -1,17 +1,13 @@
-const Captain = require("./Captain");
+const Player = require("./Player");
+const TeamMember = require("../lib/TeamMember");
+const tm = new TeamMember("foo", "foo@foo.com");
 
-class Defender extends Captain {
-    constructor(name, id, email, option1, option2, option3) {
-        //check if last parameter is given, if option3 has a value then it must be a captain type person
-        if(typeof option3 !== 'undefined') {
-            super(name, id, email, option1);
-            this.averageHeaderAmt = option2;
-            this.blocks = option3;
-        } else {
-            super(name, id, email);
-            this.averageHeaderAmt = option1;
-            this.blocks = option2;
-        }
+
+class Defender extends Player {
+    constructor(kitnumber, twitterhandle, tm, averageHeaderAmt, blocks) {
+        super(kitnumber, twitterhandle, tm);
+        this.averageHeaderAmt = averageHeaderAmt;
+        this.blocks = blocks;
     }
 
     getPosition() {

@@ -1,8 +1,11 @@
 class TeamMember {
-    
-  constructor(name, kitNumber, email) {
+  /**
+   * Simple constructor for base functionality
+   * @param {*} name  string
+   * @param {*} email string verified on client side to be "chars"@"chars"."chars"
+   */
+  constructor(name, email) {
     this.name = name;
-    this.kitNumber = kitNumber;
     this.email = email;
   }
 
@@ -14,14 +17,9 @@ class TeamMember {
     return this.email;
   }
 
-  getKitNumber() {
-    return this.kitNumber;
-  }
-
   getRole() {
     return "Club Member";
   }
-
 }
 
 module.exports = TeamMember;
