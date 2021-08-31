@@ -25,19 +25,19 @@ describe("Midfield", () => {
         });
     });
 
-    describe("getAverageHeaderAmt()", () => {
-        it("Can get averageHeaderAmt via getAverageHeaderAmt()", () => {
+    describe("getDualsWon()", () => {
+        it("Can get the duals won value via getDualsWon()", () => {
         const testValue = 100;
-        const m = new Midfield(1, "sillyName", tm, testValue, 1);
-        expect(m.getAverageHeaderAmt()).toBe(testValue);
+        const m = new Midfield(1, "sillyName", tm, 1, testValue);
+        expect(m.getDualsWon()).toBe(testValue);
         });
     });
 
-    describe("getBlocks()", () => {
-        it("Can get ScoredGoals via getBlocks()", () => {
+    describe("getLongestGoalScored()", () => {
+        it("Can get the longest goal scored value via getLongestGoalScored()", () => {
         const testValue = 100;
-        const m = new Midfield(1, "sillyName", tm, 1, testValue);
-        expect(m.getBlocks()).toBe(testValue);
+        const m = new Midfield(1, "sillyName", tm, testValue, 1);
+        expect(m.getLongestGoalScored()).toBe(testValue);
         });
     });
 });
