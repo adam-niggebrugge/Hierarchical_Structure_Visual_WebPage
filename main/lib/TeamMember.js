@@ -1,5 +1,9 @@
 class TeamMember {
-    
+  /**
+   * Simple constructor for base functionality
+   * @param {*} name  string
+   * @param {*} email string verified on client side to be "chars"@"chars"."chars"
+   */
   constructor(name, email) {
     this.name = name;
     this.email = email;
@@ -16,7 +20,6 @@ class TeamMember {
   getRole() {
     return "Club Member";
   }
-
 }
 
 module.exports = TeamMember;
