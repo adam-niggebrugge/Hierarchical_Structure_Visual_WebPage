@@ -1,8 +1,7 @@
 class TeamMember {
     
-  constructor(name, kitNumber, email) {
+  constructor(name, email) {
     this.name = name;
-    this.kitNumber = kitNumber;
     this.email = email;
   }
 
@@ -12,10 +11,6 @@ class TeamMember {
 
   getEmail(){
     return this.email;
-  }
-
-  getKitNumber() {
-    return this.kitNumber;
   }
 
   getRole() {
