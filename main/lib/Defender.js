@@ -1,11 +1,17 @@
 const Captain = require("./Captain");
-const TeamMember = require("./TeamMember");
 
-class Defender extends TeamMember, Captain {
-    constructor(name, id, email, experience, averageHeaderAmt, blocks) {
-        super(name, id, email, experience);
-        this.averageHeaderAmt = averageHeaderAmt;
-        this.blocks = blocks;
+class Defender extends Captain {
+    constructor(name, id, email, option1, option2, option3) {
+        //check if last parameter is given, if option3 has a value then it must be a captain type person
+        if(typeof option3 !== 'undefined') {
+            super(name, id, email, option1);
+            this.averageHeaderAmt = option2;
+            this.blocks = option3;
+        } else {
+            super(name, id, email);
+            this.averageHeaderAmt = option1;
+            this.blocks = option2;
+        }
     }
 
     getPosition() {
@@ -20,3 +26,5 @@ class Defender extends TeamMember, Captain {
         return this.blocks;
     }
 }
+
+module.exports = Defender;
