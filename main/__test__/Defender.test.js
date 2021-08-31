@@ -20,12 +20,17 @@ describe("Defender", () => {
         const d = new Defender("Foo", 1, "test@test.com", 1, testValue);
         expect(d.blocks).toBe(testValue);
         });
+        it("Can show the correct role as a Club Member", () => {
+            const testValue = "Captain";
+            const d = new Defender("Foo", 1, "test@test.com", 1, 1, 1);
+            expect(d.getRole()).toBe(testValue);
+        });
     }); 
     
     describe("Captain Initialization", () => {
         it("Can set averageHeaderAmt via constructor for Captain", () => {
         const testValue = 100;
-        const d = new Defender("Foo", 1, "test@test.com", testValue, 1);
+        const d = new Defender("Foo", 1, "test@test.com", 1,testValue, 1);
         expect(d.averageHeaderAmt).toBe(testValue);
         });
     }); 
@@ -33,7 +38,7 @@ describe("Defender", () => {
     describe("Captain Initialization", () => {
         it("Can set blocks via constructor for Captain", () => {
         const testValue = 100;
-        const d = new Defender("Foo", 1, "test@test.com", 1, testValue);
+        const d = new Defender("Foo", 1, "test@test.com", 1, 1, testValue);
         expect(d.blocks).toBe(testValue);
         });
     }); 
@@ -41,7 +46,7 @@ describe("Defender", () => {
     describe("getPosition()", () => {
         it("getPosition() should return \"Defender\"", () => {
         const testValue = "Defender";
-        const d = new Defender("Foo", 1, "test@test.com", );
+        const d = new Defender("Foo", 1, "test@test.com", 1, 1);
         expect(d.getPosition()).toBe(testValue);
         });
     });
@@ -56,8 +61,8 @@ describe("Defender", () => {
 
     describe("getBlocks()", () => {
         it("Can get ScoredGoals via getBlocks()", () => {
-        const testValue = "GitHubUser";
-        const d = new Defender("Foo", 1, "test@test.com", testValue);
+        const testValue = 100;
+        const d = new Defender("Foo", 1, "test@test.com", 1, testValue);
         expect(d.getBlocks()).toBe(testValue);
         });
     });
