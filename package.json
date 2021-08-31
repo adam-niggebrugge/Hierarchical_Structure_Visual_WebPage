@@ -5,11 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "inquirer": "^8.1.2",
-    "jest": "^27.0.6"
+    "jest": "^27.1.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

@@ -274,6 +274,7 @@ function startQuestions() {
 
       function buildTeam() {
         //TODO file stream out
+        return;
       }
 
 
