@@ -1,30 +1,37 @@
 const Forward = require("../lib/Forward");
-const TeamMember = require("../lib/TeamMember");
-
-const tm = new TeamMember("foo", "foo@foo.com");
 
 describe("Forward", () => {
-    describe("Initialization", () => {
-        it("Can set scored goals via constructor", () => {
-        const testValue = 100;
-        const f = new Forward(1, "testName", tm, testValue);
+    describe(" TeamMemberInitialization", () => {
+        it("Can set scored goals via constructor for TeamMember", () => {
+        const testValue = "100";
+        const f = new Forward("Foo", 1, "test@test.com", testValue);
         expect(f.scoredGoals).toBe(testValue);
         });
     }); 
+        
+    describe("Captain Initialization", () => {
+        it("Can set scored goals via constructor for Captain", () => {
+            const testValue = "100";
+            const f = new Forward("Foo", 1, "test@test.com", 1, testValue);
+            expect(f.scoredGoals).toBe(testValue);
+        });
+    });
 
     describe("getPosition()", () => {
         it("getPosition() should return \"Forward\"", () => {
         const testValue = "Forward";
-        const f = new Forward(1, "testName", tm, 99);
+        const f = new Forward("Foo", 1, "test@test.com", "Forward");
         expect(f.getPosition()).toBe(testValue);
         });
     });
     
     describe("getGoals()", () => {
         it("Can get ScoredGoals via getGoals()", () => {
-        const testValue = 100;
-        const f = new Forward(1, "testName", tm, testValue);
+        const testValue = "GitHubUser";
+        const f = new Forward("Foo", 1, "test@test.com", testValue);
         expect(f.getGoals()).toBe(testValue);
         });
     });
 });
+
+
