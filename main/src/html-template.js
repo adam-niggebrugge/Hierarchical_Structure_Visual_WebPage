@@ -6,19 +6,19 @@ const generateClub = club => {
         if(forward.getCharacter().getRole() === 'Captain'){
             return `
                 <div class="card captain-card">
-                    <div class="card-header">
-                        <h2 class="card-title">${forward.getCharacter().getName()}
-                        </h2>
+                    <div class="card-header text-center">
                         <h3 class="card-title">
                             <i class="fas fa-certificate mr-2"></i>${forward.getCharacter().getRole()}
-                        </h3>
+                        </h3>    
+                        <h2 class="card-title">${forward.getCharacter().getName()}
+                        </h2>
                         <h3 class="card-title"><i class="fas fa-king mr-2"></i>
                             ${forward.getPosition()}
                         </h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">Club Captain's Reign: ${forward.getCharacter().getExperience()}
+                            <li class="list-group-item">Club Captain's Reign: ${forward.getCharacter().getExperience()} Seasons
                             </li>
                             <li class="list-group-item">Proudly Wears: ${forward.getKitNumber()}</li>
                             <li class="list-group-item">Email:      <a href="mailto:${forward.getCharacter().getEmail()}">${forward.getCharacter().getEmail()}
@@ -28,7 +28,7 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${forward.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                  </a>
                             </li>
-                            <li class="list-group-item">Goals Scored for Club : ${forward.getGoals()}
+                            <li class="list-group-item">Goals Scored this Season: ${forward.getGoals()}!
                             </li>
                         </ul>
                     </div>
@@ -37,9 +37,9 @@ const generateClub = club => {
         } else {
             return `
                 <div class="card club-member-card">
-                    <div class="card-header">
+                    <div class="card-header text-center">
                         <h2 class="card-title">${forward.getCharacter().getName()}</h2>
-                        <h3 class="card-title"><i class="fas fa-king mr-2"></i>${forward.getPosition()}</h3>
+                        <h3 class="card-title"><i class="fas fa-chess-king mr-2"></i>${forward.getPosition()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -65,16 +65,16 @@ const generateClub = club => {
         if(defender.getCharacter().getRole() === 'Captain'){
             return `
             <div class="card captain-card">
-                <div class="card-header">
-                    <h2 class="card-title">${defender.getCharacter().getName()}</h2>
+                <div class="card-header text-center">
                     <h3 class="card-title">
                         <i class="fas fa-certificate mr-2"></i>${defender.getCharacter().getRole()}
                     </h3>
+                    <h2 class="card-title">${defender.getCharacter().getName()}</h2>
                     <h3 class="card-title"><i class="fas fa-chess-rook mr-2"></i>${defender.getPosition()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Club Captain's Reign: ${defender.getCharacter().getExperience()}
+                        <li class="list-group-item">Club Captain's Reign: ${defender.getCharacter().getExperience()} Seasons
                         </li>
                         <li class="list-group-item">Proudly Wears: ${defender.getKitNumber()}</li>
                         <li class="list-group-item">Email:  
@@ -96,7 +96,7 @@ const generateClub = club => {
         } else {
             return `
             <div class="card club-member-card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h2 class="card-title">${defender.getCharacter().getName()}</h2>
                     <h3 class="card-title"><i class="fas fa-chess-rook mr-2"></i>${defender.getPosition()}</h3>
                 </div>
@@ -127,16 +127,17 @@ const generateClub = club => {
         if(midfield.getCharacter().getRole() === 'Captain'){
             return `
             <div class="card captain-card">
-                <div class="card-header">
-                    <h2 class="card-title">${midfield.getCharacter().getName()}</h2>
+                <div class="card-header text-center">
                     <h3 class="card-title">
                         <i class="fas fa-certificate mr-2"></i>${midfield.getCharacter().getRole()}
                     </h3>
+                    <h2 class="card-title">${midfield.getCharacter().getName()}
+                    </h2>
                     <h3 class="card-title"><i class="fas fa-chess-knight mr-2"></i>${midfield.getPosition()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Club Captain's Reign: ${midfield.getCharacter().getExperience()}
+                        <li class="list-group-item">Club Captain's Reign: ${midfield.getCharacter().getExperience()} Seasons
                         </li>
                         <li class="list-group-item">Proudly Wears: ${midfield.getKitNumber()}</li>
                         <li class="list-group-item">Email:  
@@ -158,7 +159,7 @@ const generateClub = club => {
         } else {
             return `
             <div class="card club-member-card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h2 class="card-title">${midfield.getCharacter().getName()}</h2>
                     <h3 class="card-title"><i class="fas fa-chess-knight mr-2"></i>${midfield.getPosition()}</h3>
                 </div>
@@ -189,17 +190,19 @@ const generateClub = club => {
     const generateGoalie = goalie => {
         if(goalie.getCharacter().getRole() === 'Captain'){
             return `
+    <div class='row'>
+        <div class="col-12 offset-lg-11 offset-md-8 offset-sm-6 offset-xl-11 pl-sm-6">    
             <div class="card captain-card">
                 <div class="card-header">
-                    <h2 class="card-title">${goalie.getCharacter().getName()}</h2>
-                    <h3 class="card-title">
+                    <h3 class="card-title text-center">
                         <i class="fas fa-certificate mr-2"></i>${goalie.getCharacter().getRole()}
                     </h3>
+                    <h2 class="card-title">${goalie.getCharacter().getName()}</h2>
                     <h3 class="card-title"><i class="fas fa-chess-queen mr-2"></i>${goalie.getPosition()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Club Captain's Reign: ${goalie.getCharacter().getExperience()}
+                        <li class="list-group-item">Club Captain's Reign: ${goalie.getCharacter().getExperience()} Seasons
                         </li>
                         <li class="list-group-item">Proudly Wears: ${goalie.getKitNumber()}</li>
                         <li class="list-group-item">Email:  
@@ -210,18 +213,22 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${goalie.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
-                        <li class="list-group-item">Total Clean Sheet : ${goalie.getCleanSheets()}
+                        <li class="list-group-item">Career Clean Sheets : ${goalie.getCleanSheets()}
                         </li>
                         <li class="list-group-item">Saves this Season : ${goalie.getSaves()}!!
                         </li>
                     </ul>
                 </div>
             </div>
-            `;
+        </div>
+    </div>
+           `;
         } else {
             return `
+    <div class='row'>
+        <div class="col-12 offset-lg-11 offset-md-8 offset-sm-6 offset-xl-11 pl-sm-6"> 
             <div class="card club-member-card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h2 class="card-title">${goalie.getCharacter().getName()}</h2>
                     <h3 class="card-title"><i class="fas fa-chess-queen mr-2"></i>${goalie.getPosition()}</h3>
                 </div>
@@ -244,7 +251,9 @@ const generateClub = club => {
                     </ul>
                 </div>
             </div>
-            `;
+        </div>
+    </div>
+         `;
         }
     };
 
@@ -256,13 +265,13 @@ const generateClub = club => {
         .map(forward => generateForward(forward))
     );
     html.push(club
-        .filter(player => player.getPosition() === "Defender")
-        .map(defender => generateDefender(defender))
+        .filter(player => player.getPosition() === "Midfield")
+        .map(midfield => generateMidfield(midfield))
         .join("")
     );
     html.push(club
-        .filter(player => player.getPosition() === "Midfield")
-        .map(midfield => generateMidfield(midfield))
+        .filter(player => player.getPosition() === "Defender")
+        .map(defender => generateDefender(defender))
         .join("")
     );
     html.push(club
@@ -288,16 +297,16 @@ module.exports = club => {
     <title>My Club</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/style.css">
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 
-<body>
+<body class='general-background'>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 club-heading">
-                <h1 class="text-center">My Club</h1>
+                <h1 class="text-center"><i class="fas fa-futbol p-3"></i>My Club</h1><i class="fas fa-futbol p-3"></i>
             </div>
         </div>
     </div>

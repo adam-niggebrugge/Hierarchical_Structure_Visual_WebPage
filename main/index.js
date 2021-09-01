@@ -428,10 +428,16 @@ function startQuestions() {
               when: (answer) => answer.position === 'Goalie',
             },
           ]).then(answers => {
-            if(answers.position === 'Goalie'){
-              isGoalie = true;
+            if(answers.position || answers.confirm_answer){
+              if(answers.position === 'Goalie'){
+                isGoalie = true;
+              }
+              getPositionInquirer(teamMember, answers.position);
+            } else{
+              //user has decided not make the team member a goalie, repeat questions
+              console.log("Lets ask that again then.")
+              setPosition(teamMember);
             }
-             getPositionInquirer(teamMember, answers.position);
           })
         } else {
           inquirer.prompt([
