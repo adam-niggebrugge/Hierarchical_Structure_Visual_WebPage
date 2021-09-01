@@ -164,7 +164,7 @@ function startQuestions() {
           {
             type: 'input',
             name: 'scoredGoals',
-            message: `How many goals has ${teamMember.name}?`,
+            message: `How many goals has ${teamMember.name} scored this season?`,
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/
@@ -220,7 +220,7 @@ function startQuestions() {
           {
             type: 'input',
             name: 'longestGoalScored',
-            message: `What is the longest goal ${teamMember.name} has scored for your club?`,
+            message: `What is the longest goal ${teamMember.name} has scored?`,
             validate: answer => {
               const pass = answer.match(
                 /^[0-9]\d*$/

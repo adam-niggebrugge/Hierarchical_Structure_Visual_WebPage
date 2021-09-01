@@ -24,7 +24,7 @@ const generateClub = club => {
                             <li class="list-group-item">Email:      <a href="mailto:${forward.getCharacter().getEmail()}">${forward.getCharacter().getEmail()}
                                 </a>
                             </li>
-                            <li  class="list-group-item">Tweet to ${forward.getTwitterHandle()}
+                            <li  class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${forward.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                  </a>
                             </li>
@@ -47,7 +47,7 @@ const generateClub = club => {
                             <li class="list-group-item">Email:      <a href="mailto:${forward.getCharacter().getEmail()}">${forward.getCharacter().getEmail()}
                                 </a>
                             </li>
-                            <li class="list-group-item">Tweet to ${forward.getTwitterHandle()}
+                            <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${forward.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                             </li>
@@ -81,7 +81,7 @@ const generateClub = club => {
                             <a href="mailto:${defender.getCharacter().getEmail()}">${defender.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${defender.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${defender.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
@@ -107,7 +107,7 @@ const generateClub = club => {
                             <a href="mailto:${defender.getCharacter().getEmail()}">${defender.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${defender.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${defender.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
@@ -143,7 +143,7 @@ const generateClub = club => {
                             <a href="mailto:${midfield.getCharacter().getEmail()}">${midfield.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${midfield.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${midfield.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
@@ -169,7 +169,7 @@ const generateClub = club => {
                             <a href="mailto:${midfield.getCharacter().getEmail()}">${midfield.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${midfield.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${midfield.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
@@ -206,7 +206,7 @@ const generateClub = club => {
                             <a href="mailto:${goalie.getCharacter().getEmail()}">${goalie.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${goalie.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${goalie.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
@@ -233,7 +233,7 @@ const generateClub = club => {
                             <a href="mailto:${goalie.getCharacter().getEmail()}">${goalie.getCharacter().getEmail()}
                             </a>
                         </li>
-                        <li class="list-group-item">Tweet to ${goalie.getTwitterHandle()}
+                        <li class="list-group-item">
                                 <a href="https://twitter.com/intent/tweet?screen_name=${goalie.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
