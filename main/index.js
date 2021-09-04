@@ -337,12 +337,16 @@ function startQuestions() {
               when: (answer) => answer.position === 'Goalie',
             },
           ]).then(answers => {
-            if(answers.position && !answers.confirm_answer) {
+            if(answers.position === 'Goalie' && answers.confirm_answer) {
+              //user wants player as goalie
+              isGoalie = true;
               getPositionInquirer(clubMember, answers.position, passPlayerAnswers);
-            } else if(!answers.confirm_answer){
+            } else if(answers.position === 'Goalie' && !answers.confirm_answer){
               console.log("Lets ask that again then.");
               setPosition(clubMember, passPlayerAnswers);
-            } 
+            } else {
+              getPositionInquirer(clubMember, answers.position, passPlayerAnswers);
+            }
           })
         } else {
           inquirer.prompt([
