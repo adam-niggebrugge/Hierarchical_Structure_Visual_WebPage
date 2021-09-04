@@ -85,7 +85,7 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${defender.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
-                        <li class="list-group-item">Average Header Per Match : ${defender.getAverageHeaderAmt()}
+                        <li class="list-group-item">Aerial Dual Win Rate : ${defender.getAerialDualsWon()}%
                         </li>
                         <li class="list-group-item">Blocks this Season : ${defender.getBlocks()}
                         </li>
@@ -111,7 +111,7 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${defender.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
-                        <li class="list-group-item">Average Header Per Match : ${defender.getAverageHeaderAmt()}
+                        <li class="list-group-item">Aerial Dual Win Rate : ${defender.getAerialDualsWon()}%
                         </li>
                         <li class="list-group-item">Blocks this Season : ${defender.getBlocks()}
                         </li>
@@ -148,7 +148,8 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${midfield.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
-                        <li class="list-group-item">Average Duals Won Per Match : ${midfield.getDualsWon()}
+                        <li class="list-group-item">Duals Win Rate : ${midfield.getDualsWon()}%
+                        </li>
                         </li>
                         <li class="list-group-item">Longest Distance Goal Scored : ${midfield.getLongestGoalScored()}!!
                         </li>
@@ -174,7 +175,7 @@ const generateClub = club => {
                                 <a href="https://twitter.com/intent/tweet?screen_name=${midfield.getTwitterHandle()}&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
                                 </a>
                         </li>
-                        <li class="list-group-item">Average Duals Won Per Match : ${midfield.getDualsWon()}
+                        <li class="list-group-item">Duals Win Rate : ${midfield.getDualsWon()}%
                         </li>
                         <li class="list-group-item">Longest Distance Goal Scored : ${midfield.getLongestGoalScored()}!!
                         </li>
@@ -260,7 +261,7 @@ const generateClub = club => {
 
     const html = [];
 
-    console.log(`before html pushes ${player}`)
+    console.log(`before html pushes ${club}`)
     html.push(club
         .filter(player => player.getPosition() === "Forward")
         .map(forward => generateForward(forward))
