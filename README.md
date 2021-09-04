@@ -30,6 +30,11 @@ This project is a demonstration of building a simple website interface for any h
 
 This uses a console application to run a javascript file through NodeJS to develop a simple web-page based on a template.
 
+Below is a gif of the resulting website showing mobile viewing sizing.
+
+![MyClubDemo](https://user-images.githubusercontent.com/83618122/132083104-9c1ef1ae-4145-445d-ae5c-95a767ef90fe.gif)
+
+
 ### Hierarchical_Structure_Visual_WebPage
 An exercise to work with class objects, NodeJS and testing
 
