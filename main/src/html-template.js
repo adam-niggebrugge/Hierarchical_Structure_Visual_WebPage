@@ -151,7 +151,7 @@ const generateClub = club => {
                         <li class="list-group-item">Duals Win Rate : ${midfield.getDualsWon()}%
                         </li>
                         </li>
-                        <li class="list-group-item">Longest Distance Goal Scored : ${midfield.getLongestGoalScored()}!!
+                        <li class="list-group-item">Longest Goal Distance Scored was ${midfield.getLongestGoalScored()} yards out!!
                         </li>
                     </ul>
                 </div>
@@ -177,7 +177,7 @@ const generateClub = club => {
                         </li>
                         <li class="list-group-item">Duals Win Rate : ${midfield.getDualsWon()}%
                         </li>
-                        <li class="list-group-item">Longest Distance Goal Scored : ${midfield.getLongestGoalScored()}!!
+                        <li class="list-group-item">Longest Goal Distance Scored was ${midfield.getLongestGoalScored()} yards out!!
                         </li>
                         </li>
                     </ul>
@@ -190,9 +190,7 @@ const generateClub = club => {
     // create the html for goalie
     const generateGoalie = goalie => {
         if(goalie.getCharacter().getRole() === 'Captain'){
-            return `
-    <div class='row'>
-        <div class="col-12 offset-lg-11 offset-md-8 offset-sm-6 offset-xl-11 pl-sm-6">    
+            return `   
             <div class="card captain-card">
                 <div class="card-header">
                     <h3 class="card-title text-center">
@@ -221,13 +219,9 @@ const generateClub = club => {
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
            `;
         } else {
             return `
-    <div class='row'>
-        <div class="col-12 offset-lg-11 offset-md-8 offset-sm-6 offset-xl-11 pl-sm-6"> 
             <div class="card club-member-card">
                 <div class="card-header text-center">
                     <h2 class="card-title">${goalie.getCharacter().getName()}</h2>
@@ -252,8 +246,6 @@ const generateClub = club => {
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
          `;
         }
     };
@@ -266,30 +258,37 @@ const generateClub = club => {
         .filter(player => player.getPosition() === "Forward")
         .map(forward => generateForward(forward))
     );
-    html.push(`</div>`);
+    html.push(`
+    </div>`);
 
-    html.push(`<div class="row d-flex justify-content-around">`);
+    html.push(`
+    <div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Midfield")
         .map(midfield => generateMidfield(midfield))
         .join("")
     );
-    html.push(`</div>`);
+    html.push(`
+    </div>`);
 
-    html.push(`<div class="row d-flex justify-content-around">`);
+    html.push(`
+    <div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Defender")
         .map(defender => generateDefender(defender))
         .join("")
     );
-    html.push(`</div>`);
+    html.push(`
+    </div>`);
 
-    html.push(`<div class="row d-flex justify-content-around">`);
+    html.push(`
+    <div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Goalie")
         .map(goalie => generateGoalie(goalie))
     );
-    html.push(`</div>`);
+    html.push(`
+    </div>`);
 
     return html.join("");
 
@@ -318,11 +317,13 @@ module.exports = club => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 club-heading">
-                <h1 class="text-center">
-                    <i class="fas fa-futbol p-3"></i>
-                    My Club
-                    <i class="fas fa-futbol p-3"></i>
-                </h1>
+                <div class="row d-flex justify-content-center">
+                    <h1 class="text-center cust-header">
+                        <i class="fas fa-futbol p-3"></i>
+                        My Club
+                        <i class="fas fa-futbol p-3"></i>
+                    </h1>
+                </div>
             </div>
         </div>
     </div>
