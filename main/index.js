@@ -233,7 +233,7 @@ function startQuestions() {
         {
           type: 'input',
           name: 'averageHeaderAmt',
-          message: `How many headers does ${clubMember.name} average per game?`,
+          message: `How many aerial duals does ${clubMember.name} win per game?`,
           validate: answer => {
             const pass = answer.match(
               /^[0-9]\d*$/
