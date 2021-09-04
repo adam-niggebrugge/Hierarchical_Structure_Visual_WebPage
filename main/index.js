@@ -337,12 +337,12 @@ function startQuestions() {
               when: (answer) => answer.position === 'Goalie',
             },
           ]).then(answers => {
-            if(answers.position || answers.confirm_answer){
-              if(answers.position === 'Goalie'){
-                isGoalie = true;
-              }
+            if(!answers.confirm_answer){
+                console.log("Lets ask that again then.");
+                setPosition(clubMember, passPlayerAnswers);
+            } else if(answers.position) {
               getPositionInquirer(clubMember, answers.position, passPlayerAnswers);
-            } else{
+            } else {
               //user has decided not make the team member a goalie, repeat questions
               console.log("Lets ask that again then.")
               setPosition(clubMember, passPlayerAnswers);
