@@ -1,4 +1,4 @@
-class TeamMember {
+class ClubMember {
   /**
    * Simple constructor for base functionality
    * @param {*} name  string
@@ -22,4 +22,4 @@ class TeamMember {
   }
 }
 
-module.exports = TeamMember;
+module.exports = ClubMember;
