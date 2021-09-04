@@ -1,9 +1,9 @@
 const Player = require("./Player");
 
 class Defender extends Player {
-    constructor(kitnumber, twitterhandle, object, averageHeaderAmt, blocks) {
+    constructor(kitnumber, twitterhandle, object, aerialDualsWon, blocks) {
         super(kitnumber, twitterhandle, object);
-        this.averageHeaderAmt = averageHeaderAmt;
+        this.aerialDualsWon = aerialDualsWon;
         this.blocks = blocks;
     }
 
@@ -11,8 +11,8 @@ class Defender extends Player {
         return "Defender";
     }
     
-    getAverageHeaderAmt(){
-        return this.averageHeaderAmt;
+    getAerialDualsWon(){
+        return this.aerialDualsWon;
     }
 
     getBlocks(){

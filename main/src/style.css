@@ -1,0 +1,62 @@
+.club-heading {
+    background-color: #ff7300;
+    color: #007bff;
+    background-image: url('../../assets/images/TQL_shot.jpg');
+    background-size: cover;
+  }
+  
+.cust-header{
+  background-color: #ff7300;
+  color: #007bff;
+  z-index: 25;
+}
+
+  .club-area {
+    max-width: 1000px;
+    margin: 3em auto;
+    flex-wrap: wrap;
+  }
+  
+  .club-member-card {
+    margin: 1em;
+    max-width: 280px;
+    width: 90%;
+    min-height: 22rem;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.897);
+    border: none;
+  }
+
+  .captain-card {
+    margin: 1em;
+    max-width: 280px;
+    width: 90%;
+    min-height: 22rem;
+    background-color: #ff7300;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 4px 16px 12px rgba(212, 82, 78, 0.7);
+    border: none;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f6f7f8;
+  }
+  
+  .list-group-item {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .general-background{
+    background-image: url('../../assets/images/soccerField.png');
+  }

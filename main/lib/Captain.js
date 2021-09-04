@@ -1,6 +1,6 @@
-const TeamMember = require("./TeamMember");
+const ClubMember = require("./ClubMember");
 
-class Captain extends TeamMember {
+class Captain extends ClubMember {
 
   constructor(name, email, experience) {
     super(name, email);
