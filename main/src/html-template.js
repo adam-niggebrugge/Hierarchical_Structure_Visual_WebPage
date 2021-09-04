@@ -260,6 +260,7 @@ const generateClub = club => {
 
     const html = [];
 
+    console.log(`before html pushes ${player}`)
     html.push(club
         .filter(player => player.getPosition() === "Forward")
         .map(forward => generateForward(forward))
@@ -306,7 +307,11 @@ module.exports = club => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 club-heading">
-                <h1 class="text-center"><i class="fas fa-futbol p-3"></i>My Club</h1><i class="fas fa-futbol p-3"></i>
+                <h1 class="text-center">
+                    <i class="fas fa-futbol p-3"></i>
+                    My Club
+                    <i class="fas fa-futbol p-3"></i>
+                </h1>
             </div>
         </div>
     </div>
