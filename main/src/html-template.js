@@ -260,27 +260,37 @@ const generateClub = club => {
 
 
     const html = [];
-
-    html.push()
+    //construct the forward(s) block
+    html.push(`<div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Forward")
         .map(forward => generateForward(forward))
     );
+    html.push(`</div>`);
+
+    html.push(`<div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Midfield")
         .map(midfield => generateMidfield(midfield))
         .join("")
     );
+    html.push(`</div>`);
+
+    html.push(`<div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Defender")
         .map(defender => generateDefender(defender))
         .join("")
     );
+    html.push(`</div>`);
+
+    html.push(`<div class="row d-flex justify-content-around">`);
     html.push(club
         .filter(player => player.getPosition() === "Goalie")
         .map(goalie => generateGoalie(goalie))
-        .join("")
     );
+    html.push(`</div>`);
+
     return html.join("");
 
 }
