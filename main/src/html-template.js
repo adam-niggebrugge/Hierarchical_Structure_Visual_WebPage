@@ -261,7 +261,7 @@ const generateClub = club => {
 
     const html = [];
 
-    console.log(`before html pushes ${club}`)
+    html.push()
     html.push(club
         .filter(player => player.getPosition() === "Forward")
         .map(forward => generateForward(forward))
@@ -317,11 +317,7 @@ module.exports = club => {
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="club-area col-12 d-flex justify-content-center">
-                ${generateClub(club)}
-            </div>
-        </div>
+        ${generateClub(club)}     
     </div>
 </body>
 </html>

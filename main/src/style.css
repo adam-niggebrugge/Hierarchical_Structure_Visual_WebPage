@@ -5,6 +5,12 @@
     background-size: cover;
   }
   
+.cust-header{
+  background-color: #ff7300;
+  color: #007bff;
+  z-index: 25;
+}
+
   .club-area {
     max-width: 1000px;
     margin: 3em auto;
